@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Streamed Song</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Circular Std', 'Proxima Nova', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #09e9e9, #191414);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+        }
+        h1, p {
+            animation: fadeIn 1s ease-out forwards, colorDance 3s infinite ease-in-out;
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+
+        /* Keyframes for fading in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes for font color and size animation */
+        @keyframes colorDance {
+            0% {
+                color: #1db954;
+                transform: scale(1);
+            }
+            25% {
+                color: #f54291;
+                transform: scale(1.1);
+            }
+            50% {
+                color: #f5e142;
+                transform: scale(1.05);
+            }
+            75% {
+                color: #42a5f5;
+                transform: scale(0.95);
+            }
+            100% {
+                color: #1db954;
+                transform: scale(1);
+            }
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Most Streamed Song</h1>
+        <p><span style="color: #1db954; font-weight: bold;">Dance Monkey</span> by <span style="color: #1db954; font-weight: bold;">Tones and I</span>.</p>
+        <!-- Audio element to play the song in the background -->
+        <audio id="background-audio" controls autoplay loop muted>
+            <!-- Use relative path for the audio file -->
+            <source src="dance_monkey_remix (1).wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        // Get the audio element
+        const audio = document.getElementById('background-audio');
+
+        // Set the initial volume to 50%
+        audio.volume = 0.5;
+
+        // Wait for the audio to be ready
+        audio.oncanplaythrough = () => {
+            // Unmute and start the fade-in effect (volume increase over time)
+            audio.muted = false;
+            let fadeInInterval = setInterval(() => {
+                if (audio.volume < 0.5) {
+                    audio.volume += 0.01;  // Increase volume by 1% every interval
+                } else {
+                    clearInterval(fadeInInterval);  // Stop once it reaches 50%
+                }
+            }, 100);
+        };
+
+        // Fade-out effect (triggered when page is clicked)
+        document.body.addEventListener('click', () => {
+            let fadeOutInterval = setInterval(() => {
+                if (audio.volume > 0) {
+                    audio.volume -= 0.01;  // Decrease volume by 1% every interval
+                } else {
+                    clearInterval(fadeOutInterval);  // Stop once volume reaches 0
+                    audio.pause();  // Pause audio when it has faded out completely
+                }
+            }, 100);
+            window.location.href = "top-genres.html";  // Redirect to another page
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+

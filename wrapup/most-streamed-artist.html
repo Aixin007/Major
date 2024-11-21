@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Streamed Artist</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Circular Std', 'Proxima Nova', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #09e9e9, #191414);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            position: relative;
+        }
+        h1, p {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        p {
+            font-size: 5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff6f61, #ffcc00, #1db954);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 4px;
+            transform: perspective(1000px) rotateX(15deg) rotateY(5deg) scale(1.1); /* Subtle 3D effect */
+            font-family: 'Arial', sans-serif;
+            animation: glowZoom 2s infinite alternate; /* Glow animation */
+        }
+
+        /* Keyframes for fading in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes for glow zoom effect */
+        @keyframes glowZoom {
+            0% {
+                text-shadow: 0 0 5px #1db954, 0 0 10px #1db954, 0 0 15px #1db954;
+            }
+            50% {
+                text-shadow: 0 0 10px #1db954, 0 0 15px #1db954, 0 0 20px #1db954;
+            }
+            100% {
+                text-shadow: 0 0 5px #1db954, 0 0 10px #1db954, 0 0 15px #1db954;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Most Streamed Artist</h1>
+        <p>Martin Garrix</p>
+    </div>
+
+    <script>
+        // Add an event listener for clicks on the body
+        document.body.addEventListener('click', () => {
+            // Redirect to a separate video page when the user clicks anywhere on the page
+            window.location.href = 'video.html'; // Replace 'video.html' with your video page filename
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
